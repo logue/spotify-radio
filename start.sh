@@ -12,4 +12,4 @@ su - user -c "spotifyd --username $SPOTIFY_USERNAME --password $SPOTIFY_PASSWORD
 sleep 2
 
 echo "Starting darkice..."
-sudo su - user -c "darkice -c /home/user/darkice.cfg"
+su su - user -c "darkice -c /home/user/darkice.cfg"
