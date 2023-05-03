@@ -10,8 +10,8 @@ It uses the excellent [spotifyd](https://github.com/Spotifyd/spotifyd).
 
 ## How?
 
-```
-docker run --name spotify -p 20300:20300 -e "SPOTIFY_USERNAME=$USERNAME" -e "SPOTIFY_PASSWORD=$PASS" borges/spotify-radio
+```shell
+docker run --name spotify -p 20300:20300 -e "SPOTIFY_USERNAME=$USERNAME" -e "SPOTIFY_PASSWORD=$PASS" logue/spotify-radio
 ```
 
 Then connect to the stream via `http://my.ip.address:20300/spotify`.
@@ -27,6 +27,7 @@ So I've been looking for alternatives. Spotifyd came to the rescue but every tim
 [spotifyd](https://github.com/Spotifyd/spotifyd) binary was compiled via `cargo build --release --features pulseaudio_backend` and was included here to accelerate building time. You should compile it by yourself.
 
 ## Legal
+
 Spotify Radio in licensed under MIT.
 
 SPOTIFY is a trademark of Spotify AB.
