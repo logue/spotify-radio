@@ -4,14 +4,17 @@ Stream your Spotify collection
 
 ## What?
 
-A docker image that creates a new device on Spotify (called "Daemon"), which streams what you're listening to Icecast.
+A docker image that creates a new device on Spotify (called "Daemon"), which streams what you're listening to [icecast2](https://icecast.org/).
 
 It uses the excellent [spotifyd](https://github.com/Spotifyd/spotifyd).
 
 ## How?
 
-```shell
-docker run --name spotify -p 20300:20300 -e "SPOTIFY_USERNAME=$USERNAME" -e "SPOTIFY_PASSWORD=$PASS" logue/spotify-radio
+```sh
+docker run --name spotify \
+  -p 20300:20300 \
+  -e "SPOTIFY_USERNAME=$USERNAME" -e "SPOTIFY_PASSWORD=$PASS" \
+  logue/spotify-radio
 ```
 
 Then connect to the stream via `http://my.ip.address:20300/spotify`.
@@ -29,5 +32,11 @@ So I've been looking for alternatives. Spotifyd came to the rescue but every tim
 ## Legal
 
 Spotify Radio in licensed under MIT.
-
 SPOTIFY is a trademark of Spotify AB.
+
+This project uses the following libraries:
+
+- [spotifyd](https://spotifyd.rs/)
+- [LAME](https://lame.sourceforge.io/)
+- [icecast2](https://icecast.org/)
+- [darkice](http://www.darkice.org/)

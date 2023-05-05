@@ -10,7 +10,7 @@ RUN apt update && apt upgrade -y
 #   && cd ../
 
 # Setup icecast2
-RUN apt install pulseaudio alsa-utils darkice icecast2 -y
+RUN apt install pulseaudio alsa-utils darkice icecast2 lame nano -y
 RUN sed "s/^load-module module-console-kit/#load-module module-console-kit/" -i /etc/pulse/default.pa \
   && sed "s/ENABLE=false/ENABLE=true/" -i /etc/default/icecast2 \
   && sed "s/hackme/prettybigpasswordthatnoonewouldguess/g" -i /etc/icecast2/icecast.xml \
@@ -26,11 +26,13 @@ ADD spotifyd /bin/spotifyd
 ADD darkice.cfg /home/user/darkice.cfg
 
 USER user
+RUN chown -R $USER:$USER /home/$USER
 RUN mkdir -p /home/user/.config/spotifyd
 ADD spotifyd.conf /home/user/.config/spotifyd/spotifyd.conf
 ADD custom_boot.sh /home/user/custom_boot.sh
 
 USER root
+# RUN ULSE_SERVER=unix:/run/user/1000/pulse/native amixer -D pulse sset Master 50%
 
 EXPOSE 20300
 ENTRYPOINT [ "/bin/start.sh" ]
