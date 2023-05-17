@@ -4,6 +4,7 @@ RUN apt install pulseaudio alsa-utils darkice icecast2 lame nano -y
 
 # Setup icecast2
 ADD icecast.xml /etc/icecast2/icecast.xml
+ADD 5-minutes-of-silence.mp3 /usr/share/icecast2/web/silence.mp3
 RUN sed "s/^load-module module-console-kit/#load-module module-console-kit/" -i /etc/pulse/default.pa \
   && sed "s/ENABLE=false/ENABLE=true/" -i /etc/default/icecast2 \
   && mkdir -p /audio \
@@ -24,7 +25,7 @@ ADD spotifyd.conf /home/user/.config/spotifyd/spotifyd.conf
 ADD custom_boot.sh /home/user/custom_boot.sh
 
 USER root
-# RUN ULSE_SERVER=unix:/run/user/1000/pulse/native amixer -D pulse sset Master 50%
+# RUN PULSE_SERVER=unix:/run/user/1000/pulse/native amixer -D pulse sset Master 50%
 
 EXPOSE 20300
 EXPOSE 20301

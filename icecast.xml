@@ -27,6 +27,9 @@
     <port>20300</port>
     <bind-address>0.0.0.0</bind-address>
     <shoutcast-mount>/stream</shoutcast-mount>
+    <fallback-mount>/silence.mp3</fallback-mount>
+    <fallback-override>1</fallback-override>
+    <fallback-when-full>1</fallback-when-full>
   </listen-socket>
 
   <http-headers>

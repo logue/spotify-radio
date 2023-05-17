@@ -40,3 +40,4 @@ This project uses the following libraries:
 - [LAME](https://lame.sourceforge.io/)
 - [icecast2](https://icecast.org/)
 - [darkice](http://www.darkice.org/)
+- [blank-audio](https://github.com/anars/blank-audio)
